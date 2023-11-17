@@ -1,0 +1,64 @@
+<template>
+  <main>
+    <a-page-header title="Novo Chamado" />
+
+    <a-form ref="formRef" :model="formState" :rules="rules" :label-col="labelCol" :wrapper-col="wrapperCol">
+      <a-form-item ref="title" label="Titulo" name="title">
+        <a-input v-model:value="formState.title" />
+      </a-form-item>
+
+      <a-form-item ref="description" label="Descrição" name="description">
+        <a-textarea v-model:value="formState.description" />
+      </a-form-item>
+
+      <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+        <a-button type="primary" @click="onSubmit">Criar</a-button>
+        <a-button style="margin-left: 10px" @click="resetForm">Limpar</a-button>
+      </a-form-item>
+    </a-form>
+  </main>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      formState: {
+        title: '',
+        description: '',
+        status: 'Aberto'
+      },
+      rules: {
+        title: [
+          { required: true, message: 'Digite o título do chamado', trigger: 'blur' },
+        ],
+        description: [
+          { required: true, message: 'Digite a mensagem do chamado', trigger: 'blur' },
+        ]
+      },
+      labelCol: { span: 5 },
+      wrapperCol: { span: 13 },
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$refs.formRef.validate().then((valid) => {
+        if (valid) {
+          console.log(this.formState);
+          // enviar para api
+          // api vai retornar um id
+          const id = 123
+          this.$router.push(`/help-desk/${id}`)
+        } else {
+          console.log('Erro de validação!');
+        }
+      }).catch((error) => {
+        console.error('Erro na validação:', error);
+      });
+    },
+    resetForm() {
+      this.$refs.formRef.resetFields();
+    }
+  }
+}
+</script>
