@@ -8,6 +8,7 @@ import ExtractView from '../views/ExtractView.vue'
 import BagdeView from '../views/BadgeView.vue'
 import HelpDeskDetailView from '../views/HelpDeskDetailView.vue'
 import HelpDeskFormView from '../views/HelpDeskFormView.vue'
+import RegisterView from '../views/RegisterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +19,14 @@ const router = createRouter({
       component: AuthLayout,
       children: [
         {path: '', component: LoginView}
+      ]
+    },
+    {
+      path: '/sign-up',
+      name: 'auth',
+      component: AuthLayout,
+      children: [
+        {path: '', component: RegisterView}
       ]
     },
     {
