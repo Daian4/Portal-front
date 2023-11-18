@@ -33,3 +33,21 @@ npm run build
 ```sh
 npm run lint
 ```
+
+ ## Aqui você encontrará o [Portal](https://portal-front-19ng.onrender.com/auth/sign-in) 
+
+<br>
+
+## Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir um problema ou enviar um pull request.
+
+## Tecnologias Ultilizadas 
+
+[![My Skills](https://skillicons.dev/icons?i=javascript,nodejs,,git,github,vue&perline=3)](https://skillicons.dev)
+
+  <br/> 
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
