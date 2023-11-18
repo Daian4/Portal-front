@@ -1,4 +1,12 @@
 <template>
+   <a-config-provider
+    :theme="{
+      token: {
+        colorPrimary: '#f05d14',
+      },
+    }"
+  >
+    </a-config-provider>
   <main>
     <div class="content">
       <a-card style="max-width: 500px">
@@ -49,10 +57,25 @@
 export default {
   data() {
     return {
-      formState: '',
-      password: ''
+      formState: {
+        email: '',
+        password: ''
+      },
+      disabled: false
     }
   },
+  methods: {
+    async onFinish(){
+      try {
+        const response = await this.$axios.post('/login', this.formState)
+        localStorage.setItem('token', response.data.token)
+        this.$router.push('/')
+      } catch (error) {
+        console.log(error)
+        alert(error.response.data.message)
+      }
+    }
+  }
 }
 </script>
 

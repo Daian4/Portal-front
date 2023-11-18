@@ -8,10 +8,14 @@
       </template>
     </a-page-header>
     <div>
-      <a-table :columns="columns" :data-source="data" bordered>
-        <template #bodyCell="{ column, text }">
+      <a-table :columns="columns" :data-source="tickets" bordered>
+        <template #bodyCell="{ column, text, record }">
           <template v-if="column.dataIndex === 'name'">
             <a>{{ text }}</a>
+          </template>
+          <template v-else-if="column.dataIndex === 'operation'">
+            {{ text }}
+            <router-link :to="'/help-desk/' + record.id"><a>Ver</a></router-link>
           </template>
         </template>
       </a-table>
@@ -23,7 +27,7 @@
 const columns = [
   {
     title: 'Titulo',
-    dataIndex: 'name'
+    dataIndex: 'title'
   },
   {
     title: 'Status',
@@ -31,34 +35,34 @@ const columns = [
   },
   {
     title: 'Data',
-    dataIndex: 'date'
-  }
-]
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    money: '$3.050',
-    date: '05/06/2023'
+    dataIndex: 'date_creation'
   },
   {
-    key: '2',
-    name: 'Julie Green',
-    money: '$1.256',
-    date: '02/05/2022'
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    money: '$1.000',
-    date: '08/01/2023'
+    title: 'Ação',
+    dataIndex: 'operation'
   }
 ]
 </script>
 
 <script>
 export default {
-  methods: {}
+  data() {
+    return {
+      tickets: []
+    }
+  },
+  created() {
+    this.fetchTickets()
+  },
+  methods: {
+    async fetchTickets() {
+      try {
+        const response = await this.$axios.get('/tickets')
+        this.tickets = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>

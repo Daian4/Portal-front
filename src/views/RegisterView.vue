@@ -1,4 +1,12 @@
 <template>
+   <a-config-provider
+    :theme="{
+      token: {
+        colorPrimary: '#f05d14',
+      },
+    }"
+  >
+    </a-config-provider>
   <main>
     <div class="content">
       <a-card style="max-width: 500px">

@@ -14,25 +14,23 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/sign-in',
-      name: 'auth',
-      component: AuthLayout,
-      children: [
-        {path: '', component: LoginView}
-      ]
+      path: '/',
+      redirect: '/badge'
     },
     {
-      path: '/sign-up',
+      path: '/auth',
       name: 'auth',
       component: AuthLayout,
       children: [
-        {path: '', component: RegisterView}
+        {path: 'sign-in', component: LoginView, name:'sign-in'},
+        {path: 'sign-up', component: RegisterView}
       ]
     },
     {
       path: '/',
       name: 'default',
       component: DefaultLayout,
+      meta: { requireAuth: true },
       children: [
         {path: 'help-desk', component: HelpDeskView, name: 'help-desk'},
         {path: 'help-desk/new', component: HelpDeskFormView, name: 'help-desk-new'},
@@ -44,5 +42,13 @@ const router = createRouter({
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.meta.requireAuth && !localStorage.getItem('token')) {
+    next({name: 'sign-in'})
+  } else {
+    next()
+  }
+});
 
 export default router

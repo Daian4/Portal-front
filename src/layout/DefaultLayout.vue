@@ -1,4 +1,11 @@
 <template>
+  <a-config-provider
+    :theme="{
+      token: {
+        colorPrimary: '#f05d14',
+      },
+    }"
+  >
   <a-layout class="layout">
     <a-layout-header>
       <div class="logo" />
@@ -26,6 +33,7 @@
       Desafio Normatel
     </a-layout-footer>
   </a-layout>
+  </a-config-provider>
 </template>
 
 <script>
