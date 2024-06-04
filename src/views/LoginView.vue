@@ -46,7 +46,7 @@
           entrar
         </a-button>
         Ou
-        <a href="">cadastre-se!</a>
+        <router-link to="/auth/sign-up">Cadastre-se!</router-link>
       </a-form-item>
     </a-form>
     </a-card>

@@ -27,7 +27,7 @@
               <a href="#">{{ item.user.name }}</a>
             </template>
             <template #avatar>
-              <a-avatar :src="item.user.image" />
+              <a-avatar src="https://icones.pro/wp-content/uploads/2021/03/avatar-de-personne-icone-homme.png" />
             </template>
           </a-list-item-meta>
         </a-list-item>
