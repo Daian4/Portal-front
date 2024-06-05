@@ -67,10 +67,10 @@
 
       <a-form-item>
         <a-button :disabled="disabled" type="primary" html-type="submit" class="login-form-button">
-          entrar
+          Cadastrar
         </a-button>
         Ou
-        <a href="">cadastre-se!</a>
+        <router-link to="/auth/sign-in">Login</router-link>
       </a-form-item>
     </a-form>
     </a-card>
@@ -81,10 +81,28 @@
 export default {
   data() {
     return {
-      formState: '',
-      password: ''
+      formState:  {
+        name: '',
+        email: '',
+        phone: '',
+        password: ''
+      },
+      
     }
   },
+  methods: {
+    async onFinish(){
+      try {
+        console.log(this.formState)
+        const response = await this.$axios.post('/register', this.formState)
+        console.log(response)
+        this.$router.push('/auth/sign-in')
+      } catch (error) {
+        console.log(error)
+        alert(error.response.data.message)
+      }
+    }
+  }
 }
 </script>
 
