@@ -68,3 +68,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.a-form{
+display: flex;
+flex-direction: column;
+}
+</style>

@@ -30,7 +30,6 @@
       </div>
     </a-layout-content>
     <a-layout-footer style="text-align: center">
-      Desafio Normatel
     </a-layout-footer>
   </a-layout>
   </a-config-provider>

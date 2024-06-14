@@ -1,13 +1,13 @@
 <template>
   <main>
-    <a-page-header title="Meus chamados">
+    <a-page-header title="Meus chamados" class="title-header">
       <template #extra>
         <router-link :to="{ name: 'help-desk-new' }">
           <a-button type="primary">Abrir chamado</a-button>
         </router-link>
       </template>
     </a-page-header>
-    <div>
+    <div class="responsible-table">
       <a-table :columns="columns" :data-source="tickets" bordered>
         <template #bodyCell="{ column, text, record }">
           <template v-if="column.dataIndex === 'name'">
@@ -66,3 +66,4 @@ export default {
   }
 }
 </script>
+

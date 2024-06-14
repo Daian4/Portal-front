@@ -1,11 +1,11 @@
 <template>
   <main>
-    <a-page-header title="Extrato Mensal">
+    <a-page-header title="Extrato Mensal" class="title-header">
       <template #extra>
         <a-button type="primary" @click="convertToPdf">Baixar em PDF</a-button>
       </template>
     </a-page-header>
-    <div ref="pdfContent">
+    <div ref="pdfContent" class="responsible-table ">
     <a-table :columns="columns" :data-source="data" bordered>
       <template #bodyCell="{ column, text }">
         <template v-if="column.dataIndex === 'name'">

@@ -4,5 +4,37 @@
 }
 
 .ant-layout-content {
-  height: 100vh;
+  flex: 1;
+	margin: 5px;
+	background: rgb(251, 251, 251);
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.ant-page-header-heading-title{
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ant-table-thead{
+  position: relative;
+  padding: 16px 0px;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 450px) {
+  .responsible-table {
+    overflow-x: scroll;
+  }
+
+  .title-header > div {
+    flex-direction: column;
+    align-items: center;
+  }
 }
